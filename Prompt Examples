@@ -1,0 +1,124 @@
+# Token Info Shade Agent - Prompt Examples
+
+These sample prompts demonstrate the variety of queries your Token Info Shade Agent can handle.
+Each example includes a sample query and the expected output type.
+
+---
+
+### Example 1: Simple token price query
+
+**Query:**  
+What’s the price of SOL?
+
+**Expected Output (Plain Text):**  
+SOL price: 27.35 USD  
+Market Cap: $9.1B  
+24h Volume: $300M  
+24h Change: +1.8%
+
+---
+
+### Example 2: Token to fiat currency conversion
+
+**Query:**  
+How much is 1 ETH in USD?
+
+**Expected Output (Plain Text):**  
+1 ETH = 1,553.20 USD
+
+---
+
+### Example 3: Token to token conversion
+
+**Query:**  
+Convert 10 DOGE to BTC
+
+**Expected Output (Markdown Table):**
+
+| From | Amount | To  | Converted Amount |
+|------|--------|-----|------------------|
+| DOGE | 10     | BTC | 0.00043          |
+
+---
+
+### Example 4: Multi-token conversion with fiat
+
+**Query:**  
+Convert 2 BTC and 5 ETH to USD
+
+**Expected Output (JSON):**
+
+{
+"conversions": [
+{ "from": "BTC", "amount": 2, "to": "USD", "converted": 42000.50 },
+{ "from": "ETH", "amount": 5, "to": "USD", "converted": 7750.25 }
+],
+"timestamp": "2025-08-02T12:00:00Z"
+}
+
+text
+
+---
+
+### Example 5: Historical price query
+
+**Query:**  
+What was the price of Bitcoin on 2023-06-01?
+
+**Expected Output (Plain Text):**  
+BTC price on 2023-06-01: 25,000.45 USD
+
+---
+
+### Example 6: Query with natural language aliases
+
+**Query:**  
+Price of ethereum in Indian rupees
+
+**Expected Output (Plain Text):**  
+ETH price: 117,000.50 INR
+
+---
+
+### Example 7: Query with common abbreviations and date shortcuts
+
+**Query:**  
+1 sol in inr yesterday
+
+**Expected Output (Markdown Table):**
+
+| From | Amount | To  | Converted Amount | Date       |
+|------|--------|-----|------------------|------------|
+| SOL  | 1      | INR | 2250.35          | (2025-08-01)|
+
+---
+
+### Example 8: Invalid or unrecognized token fallback
+
+**Query:**  
+Price of ABCXYZ token
+
+**Expected Output (Plain Text):**  
+Error: Token “ABCXYZ” not recognized. Please check spelling or try a well-known token symbol.
+
+---
+
+### Example 9: Empty or no query edge case
+
+**Query:**  
+(Empty input)
+
+**Expected Output (Plain Text):**  
+Please enter a valid query.
+
+---
+
+## Notes:
+
+- These outputs are samples; actual prices and values will reflect live data from CoinGecko.
+- Output formats depend on user's chosen preference: Plain Text, JSON, Markdown Table.
+- Multi-token queries return an array or table including all conversions.
+- Dates are recognized in `YYYY-MM-DD` format or natural terms like “yesterday” or “today”.
+
+---
+
